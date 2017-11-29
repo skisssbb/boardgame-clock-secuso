@@ -15,13 +15,13 @@
  along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.secuso.privacyfriendlyexample.activities;
+package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import org.secuso.privacyfriendlyexample.tutorial.TutorialActivity;
+import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
 /**
  * @author Karola Marky

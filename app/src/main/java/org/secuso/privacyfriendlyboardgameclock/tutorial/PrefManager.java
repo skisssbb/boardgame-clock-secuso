@@ -15,7 +15,7 @@
  along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.secuso.privacyfriendlyexample.tutorial;
+package org.secuso.privacyfriendlyboardgameclock.tutorial;
 
 import android.content.Context;
 import android.content.SharedPreferences;

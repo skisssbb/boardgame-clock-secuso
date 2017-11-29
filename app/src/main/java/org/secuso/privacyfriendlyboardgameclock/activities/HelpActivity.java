@@ -15,14 +15,14 @@
  along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.secuso.privacyfriendlyexample.activities;
+package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.os.Bundle;
 import android.widget.ExpandableListView;
 
-import org.secuso.privacyfriendlyexample.R;
-import org.secuso.privacyfriendlyexample.helpers.ExpandableListAdapter;
-import org.secuso.privacyfriendlyexample.helpers.HelpDataDump;
+import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.helpers.ExpandableListAdapter;
+import org.secuso.privacyfriendlyboardgameclock.helpers.HelpDataDump;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

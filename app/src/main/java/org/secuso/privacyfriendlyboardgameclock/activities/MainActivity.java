@@ -15,16 +15,16 @@
  along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.secuso.privacyfriendlyexample.activities;
+package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import org.secuso.privacyfriendlyexample.R;
-import org.secuso.privacyfriendlyexample.tutorial.PrefManager;
-import org.secuso.privacyfriendlyexample.tutorial.TutorialActivity;
+import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.tutorial.PrefManager;
+import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
 /**
  * @author Christopher Beckmann, Karola Marky
