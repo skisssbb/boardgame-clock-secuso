@@ -1,6 +1,7 @@
 package org.secuso.privacyfriendlyboardgameclock.helpers;
 
 import android.content.Context;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,9 @@ import org.secuso.privacyfriendlyboardgameclock.model.Player;
 import java.util.List;
 
 public class PlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
-    private List mList; //--CloneChangeRequired
+    private List playersList; //--CloneChangeRequired
     private Context mContext;
+
 
     /**
      *
@@ -26,32 +28,34 @@ public class PlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
     public PlayerListAdapter(Context context, int textViewResourceId,
                              List list) { //--CloneChangeRequired
         super(context, textViewResourceId, list);
-        this.mList = list;
+        this.playersList = list;
         this.mContext = context;
     }
 
+    /**
+     * This class deals with how the passed in List Elements to be displayed
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
+        View playerListView = convertView;
         try {
-            if (view == null) {
-                LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = vi.inflate(R.layout.player_management_custom_row, null); //--CloneChangeRequired(list_item)
+            // Reuse view if already exist, otherwise create new one
+            if(playerListView == null){
+                LayoutInflater inflater = LayoutInflater.from(mContext);
+                playerListView = inflater.inflate(R.layout.player_management_custom_row, parent, false);
             }
-            final Player p = (Player) mList.get(position); //--CloneChangeRequired
-            if (p != null) {
-                // setting list_item views
-                ((TextView) view.findViewById(R.id.player_text))
-                        .setText(p.getName());
+            Player p = (Player) getItem(position);
+            TextView pText = (TextView) playerListView.findViewById(R.id.player_text);
+            ImageView pImage = (ImageView) playerListView.findViewById(R.id.player_image);
 
-                ((ImageView) view.findViewById(R.id.player_image))
-                        .setImageBitmap(p.getIcon());
-
-            }
+            pText.setText(p.getName());
+            pImage.setImageBitmap(p.getIcon());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return view;
+        return playerListView;
     }
-
-
 }

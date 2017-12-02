@@ -15,8 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class PlayersDataSource {
+public class PlayersDataSourceSingleton {
 
+    private static PlayersDataSourceSingleton instance;
     private SQLiteDatabase database;
     private DbHelper dbHelper;
 
@@ -30,9 +31,24 @@ public class PlayersDataSource {
     };
 
 
-    public PlayersDataSource(Context context) {
+    public PlayersDataSourceSingleton(Context context) {
         dbHelper = new DbHelper(context);
-        this.context = context;
+    }
+
+    /**
+     *
+     * @param context pass the ApplicationContext the first time created, or null
+     * @return
+     */
+    public static PlayersDataSourceSingleton getInstance(Context context){
+        if(instance == null){
+            synchronized (GamesDataSourceSingleton.class){
+                if(instance == null && context != null){
+                    instance = new PlayersDataSourceSingleton(context);
+                }
+            }
+        }
+        return instance;
     }
 
     public static byte[] getBytes(Bitmap bitmap) {

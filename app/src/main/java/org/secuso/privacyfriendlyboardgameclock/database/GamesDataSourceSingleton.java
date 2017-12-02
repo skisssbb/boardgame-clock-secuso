@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class GamesDataSource {
+public class GamesDataSourceSingleton {
 
+    private static GamesDataSourceSingleton instance;
     private SQLiteDatabase database;
     private DbHelper dbHelper;
-    private Context context;
     private Game game;
-    private PlayersDataSource pds;
 
     private String[] columns = {
             DbHelper.GAMES_COL_ID,
@@ -44,12 +43,24 @@ public class GamesDataSource {
     };
 
 
-    public GamesDataSource(Context context) {
+    private GamesDataSourceSingleton(Context context) {
         dbHelper = new DbHelper(context);
+    }
 
-        //this.pds = ((MainActivity) context).getPlayersDataSource();
-        //TODO uncomment later
-        this.context = context;
+    /**
+     *
+     * @param context pass the ApplicationContext the first time created, or null
+     * @return
+     */
+    public static GamesDataSourceSingleton getInstance(Context context){
+        if(instance == null){
+            synchronized (GamesDataSourceSingleton.class){
+                if(instance == null && context != null){
+                    instance = new GamesDataSourceSingleton(context);
+                }
+            }
+        }
+        return instance;
     }
 
     public void open() {
@@ -275,7 +286,7 @@ public class GamesDataSource {
         // deserialize player IDs
         String playerIds = cursor.getString(idPlayers);
         String[] playerIdsArray = playerIds.split(";");
-        List<Player> players = pds.getPlayersWithIds(playerIdsArray);
+        List<Player> players = PlayersDataSourceSingleton.getInstance(null).getPlayersWithIds(playerIdsArray);
 
         // deserialize player round times
         String playerTimes = cursor.getString(idPlayersRoundTimes);

@@ -180,6 +180,10 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
                 intent.putExtra( PreferenceActivity.EXTRA_NO_HEADERS, true );
                 createBackStack(intent);
                 break;
+            case R.id.nav_player_management:
+                intent = new Intent(this, PlayerManagementActivity.class);
+                createBackStack(intent);
+                break;
             default:
         }
     }

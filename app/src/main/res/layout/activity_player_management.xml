@@ -8,6 +8,39 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity">
+
+        <include layout="@layout/toolbar"/>
+
+        <LinearLayout
+            android:id="@+id/main_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity"
+            tools:showIn="@layout/activity_game"
+            android:orientation="vertical"
+            android:weightSum="10"
+            style="?android:buttonBarStyle">
+
+            <fragment
+            android:id="@+id/playerManagementMainFragment"
+            android:name="org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementMainFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

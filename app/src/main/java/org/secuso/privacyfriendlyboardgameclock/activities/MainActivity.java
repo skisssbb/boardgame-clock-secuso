@@ -23,6 +23,8 @@ import android.view.View;
 import android.widget.Button;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.PrefManager;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
@@ -37,6 +39,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Create Database, only once
+        PlayersDataSourceSingleton.getInstance(this.getApplicationContext());
+        GamesDataSourceSingleton.getInstance(this.getApplicationContext());
 
         // Use this a button to display the tutorial screen
         Button b = (Button) findViewById(R.id.button_welcomedialog);
