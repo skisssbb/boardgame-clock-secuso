@@ -40,6 +40,30 @@
 
     <!-- ###PLAYER MANAGEMENT### -->
     <string name="player_management">Player Management</string>
+    <string name="chooseNewPlayerMode" translatable="false">ChooseNewPlayerModeFragment</string>
+    <string name="createNewPlayerFragment" translatable="false">CreateNewPlayerFragment</string>
+    <string name="choosePlayersFragment" translatable="false">ChoosePlayersFragment</string>
+    <string name="contactListFragment" translatable="false">ContactListFragment</string>
+    <string name="editPlayerFragment" translatable="false">EditPlayerFragment</string>
+    <string name="gameFragment" translatable="false">GameFragment</string>
+    <string name="gameHistoryFragment" translatable="false">GameHistoryFragment</string>
+    <string name="gameResultsFragment" translatable="false">GameResultsFragment</string>
+    <string name="loadGameFragment" translatable="false">LoadGameFragment</string>
+    <string name="helpFragment" translatable="false">HelpFragment</string>
+    <string name="mainMenuFragment" translatable="false">MainMenuFragment</string>
+    <string name="playerManagementFragment" translatable="false">PlayerManagementFragment</string>
+    <string name="newGameFragment" translatable="false">NewGameFragment</string>
+    <string name="playerStatisticsFragment" translatable="false">PlayerStatisticsFragment</string>
+    <string name="new_player">New Player</string>
+    <string name="contact">Contact</string>
+    <string name="dialog_choose_new_player">Choose how to create new player:</string>
+    <string name="nameDots">Name:</string>
+    <string name="picDots">Picture:</string>
+    <string name="changeColorButton">COLOR</string>
+    <string name="takePhotoButton">PHOTO</string>
+    <string name="confirm">CONFIRM</string>
+
+
 
     <!--###HELP###-->
     <string name="help">Help</string>

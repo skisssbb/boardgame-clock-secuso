@@ -32,11 +32,33 @@
             android:weightSum="10"
             style="?android:buttonBarStyle">
 
-            <fragment
-            android:id="@+id/playerManagementMainFragment"
-            android:name="org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementMainFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/player_management_main"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_vertical_margin">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/player_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </android.support.v7.widget.RecyclerView>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab_add_new_player"
+                    app:fabSize="normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="16dp"
+                    app:srcCompat="@drawable/ic_add"
+                    app:layout_anchor="@id/player_list"
+                    app:layout_anchorGravity="bottom|right|end"
+                    app:layout_behavior="org.secuso.privacyfriendlyboardgameclock.helpers.ScrollAwareFABBehavior" />
+
+            </android.support.design.widget.CoordinatorLayout>
         </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>
