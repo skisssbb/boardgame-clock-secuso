@@ -47,13 +47,27 @@
                 </android.support.v7.widget.RecyclerView>
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab_add_new_player"
+                android:id="@+id/fab_add_new_player"
+                app:fabSize="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                app:srcCompat="@drawable/ic_add"
+                app:layout_anchor="@id/player_list"
+                app:layout_anchorGravity="bottom|right|end"
+                app:layout_behavior="org.secuso.privacyfriendlyboardgameclock.helpers.ScrollAwareFABBehavior" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab_delete_player"
                     app:fabSize="normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:layout_margin="16dp"
-                    app:srcCompat="@drawable/ic_add"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/red"
+                    app:srcCompat="@drawable/ic_delete"
                     app:layout_anchor="@id/player_list"
                     app:layout_anchorGravity="bottom|right|end"
                     app:layout_behavior="org.secuso.privacyfriendlyboardgameclock.helpers.ScrollAwareFABBehavior" />
