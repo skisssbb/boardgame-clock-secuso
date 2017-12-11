@@ -9,6 +9,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,8 @@ import org.secuso.privacyfriendlyboardgameclock.R;
 
 public class PlayerManagementChooseModeFragment extends DialogFragment {
     Activity activity;
+    private final int REQUEST_READ_CONTACT_CODE = 7;
+    private Button contactButton;
 
     public PlayerManagementChooseModeFragment() {
         // Empty constructor is required for DialogFragment
@@ -55,7 +59,7 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
             }
         });
 
-        final Button contactButton = rootView.findViewById(R.id.button_contact);
+        contactButton = rootView.findViewById(R.id.button_contact);
         // Check for Contact Permission
         if (ContextCompat.checkSelfPermission(activity,
                 Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED)
@@ -67,7 +71,7 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 if (Build.VERSION.SDK_INT >= 23)
-                    requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 7);
+                    ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_READ_CONTACT_CODE);
                 else if (ContextCompat.checkSelfPermission(activity,
                         Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
                     contactButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_fullwidth));
@@ -78,6 +82,31 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
             }
         });
         return rootView;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case REQUEST_READ_CONTACT_CODE:{
+                // If request is cancelled, the result arrays are empty.
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    // Permission granted
+                    FragmentManager fm = getActivity().getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    Fragment prev = fm.findFragmentByTag("dialog");
+                    if(prev != null) ft.remove(prev);
+                    ft.addToBackStack(null);
+
+                    // Create and show the dialog
+                    PlayermanagementContactListFragment contactListFragment = new PlayermanagementContactListFragment();
+                    contactListFragment.show(ft, "dialog");
+                }else{
+                    // Permission denied
+                    contactButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_disabled));
+                }
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void createNewPlayer() {

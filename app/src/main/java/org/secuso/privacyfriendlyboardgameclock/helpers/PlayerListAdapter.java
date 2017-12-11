@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
 import java.util.Collections;
@@ -33,10 +34,20 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
     private List<Player> playersList;
     private Activity activity;
     private ItemClickListener itemClickListener;
+    private PlayersDataSourceSingleton pdss;
 
-    public PlayerListAdapter(Activity activity, List<Player> playersList) {
+    /**
+     *
+     * @param activity
+     * @param playersList
+     * @param itemClickListener the class which implement ItemClickListener Interface. In this case PlayerManagementActivity
+     */
+    public PlayerListAdapter(Activity activity, List<Player> playersList, ItemClickListener itemClickListener) {
+        super();
         this.playersList = playersList;
         this.activity = activity;
+        this.itemClickListener = itemClickListener;
+        this.pdss = PlayersDataSourceSingleton.getInstance(activity);
     }
 
     public Context getContext() {
@@ -61,7 +72,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         View playersView = inflater.inflate(R.layout.player_management_custom_row, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(playersView);
+        ViewHolder viewHolder = new ViewHolder(playersView,itemClickListener);
         return viewHolder;
     }
 
@@ -91,6 +102,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      * @param position position von diesem Item
      */
     public void removeItem(int position) {
+        pdss.deletePlayer(playersList.get(position));
         playersList.remove(position);
         notifyItemRemoved(position);
     }
@@ -139,6 +151,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      */
     private void removeRange(int positionStart, int itemCount) {
         for (int i = 0; i < itemCount; ++i) {
+            pdss.deletePlayer(playersList.get(positionStart));
             playersList.remove(positionStart);
         }
         notifyItemRangeRemoved(positionStart, itemCount);
@@ -168,13 +181,19 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         private ItemClickListener itemClickListener;
         private View selectedOverlay;
 
-        public ViewHolder(View itemView) {
+        /**
+         *
+         * @param itemView
+         * @param itemClickListener the class which implement the interface, in this case PlayermanagementActivity
+         */
+        public ViewHolder(View itemView, ItemClickListener itemClickListener) {
             super(itemView);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
             playerIMGView = (ImageView) itemView.findViewById(R.id.player_image);
             playerTextView = (TextView) itemView.findViewById(R.id.player_text);
             selectedOverlay = itemView.findViewById(R.id.selected_overlay);
+            this.itemClickListener = itemClickListener;
         }
 
         public void setItemClickListener(ItemClickListener itemClickListener){

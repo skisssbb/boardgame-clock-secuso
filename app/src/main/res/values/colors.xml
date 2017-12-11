@@ -14,6 +14,7 @@
     <color name="red">#B71C1C</color>
     <color name="green">#388E3C</color>
     <color name="grey">#b3b3b3</color>
+    <color name="trans50grey">#64b3b3b3</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen">#026499</color>

@@ -62,10 +62,10 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         pds = PlayersDataSourceSingleton.getInstance(getApplicationContext());
         pds.open();
         listPlayers = pds.getAllPlayers();
-        listPlayers.add(new Player(112,2011457,"Player1", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));
+        /*listPlayers.add(new Player(112,2011457,"Player1", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));
         listPlayers.add(new Player(113,2011453,"Player2", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));
         listPlayers.add(new Player(114,2011454,"Player3", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));
-        listPlayers.add(new Player(115,2011456,"Player4", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));
+        listPlayers.add(new Player(115,2011456,"Player4", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));*/
 
         layoutManager = new LinearLayoutManager(this);
 
@@ -78,7 +78,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         // Lookup the recyclerview in fragment layout
         playersRecycleView = findViewById(R.id.player_list);
         playersRecycleView.setHasFixedSize(true);
-        playerListAdapter = new PlayerListAdapter(this, listPlayers);
+        playerListAdapter = new PlayerListAdapter(this, listPlayers, this);
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(layoutManager);
     }
@@ -111,7 +111,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     public boolean onItemLongClicked(View view, int position) {
         if (actionMode == null) {
             actionMode = startSupportActionMode(actionModeCallback);
-            switchVisibilityOf2FABs();
         }
         toggleSelection(position);
         return true;
@@ -131,7 +130,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
 
         if (count == 0) {
             actionMode.finish();
-            switchVisibilityOf2FABs();
         } else {
             actionMode.setTitle(String.valueOf(count));
             actionMode.invalidate();
@@ -203,7 +201,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_delete:
-                switchVisibilityOf2FABs();
                 if(actionMode == null)
                     actionMode = startSupportActionMode(actionModeCallback);
         }
@@ -233,6 +230,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
+            switchVisibilityOf2FABs();
             return true;
         }
 

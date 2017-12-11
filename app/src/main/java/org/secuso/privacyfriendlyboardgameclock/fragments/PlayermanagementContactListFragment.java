@@ -7,4 +7,5 @@ import android.app.DialogFragment;
  */
 
 public class PlayermanagementContactListFragment extends DialogFragment {
+    // TODO implement this
 }
