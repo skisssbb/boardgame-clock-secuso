@@ -79,5 +79,7 @@
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

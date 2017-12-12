@@ -70,8 +70,9 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
 
             @Override
             public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= 23)
-                    ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_READ_CONTACT_CODE);
+                if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(activity,
+                        Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED)
+                    requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_READ_CONTACT_CODE);
                 else if (ContextCompat.checkSelfPermission(activity,
                         Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
                     contactButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_fullwidth));
@@ -84,6 +85,7 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
         return rootView;
     }
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
@@ -91,6 +93,7 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
                 // If request is cancelled, the result arrays are empty.
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     // Permission granted
+                    contactButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_fullwidth));
                     FragmentManager fm = getActivity().getFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
                     Fragment prev = fm.findFragmentByTag("dialog");
@@ -98,7 +101,7 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
                     ft.addToBackStack(null);
 
                     // Create and show the dialog
-                    PlayermanagementContactListFragment contactListFragment = new PlayermanagementContactListFragment();
+                    PlayerManagementContactListFragment contactListFragment = new PlayerManagementContactListFragment();
                     contactListFragment.show(ft, "dialog");
                 }else{
                     // Permission denied
@@ -129,7 +132,7 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
         ft.addToBackStack(null);
 
         // Create and show the dialog
-        PlayerManagementCreateNewFragment createNewPlayerFragment = new PlayerManagementCreateNewFragment();
+        PlayerManagementContactListFragment createNewPlayerFragment = new PlayerManagementContactListFragment();
         createNewPlayerFragment.show(ft, "dialog");
     }
 
