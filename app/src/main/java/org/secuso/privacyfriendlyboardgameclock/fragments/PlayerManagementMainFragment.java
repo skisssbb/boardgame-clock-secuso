@@ -50,7 +50,7 @@ public class PlayerManagementMainFragment extends Fragment {
         // Lookup the recyclerview in fragment layout
         playersRecycleView = rootView.findViewById(R.id.player_list);
         playersRecycleView.setHasFixedSize(true);
-        PlayerListAdapter playerListAdapter = new PlayerListAdapter(this.getActivity(),listPlayers);
+        PlayerListAdapter playerListAdapter = new PlayerListAdapter(this.getActivity(),listPlayers,null);
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 

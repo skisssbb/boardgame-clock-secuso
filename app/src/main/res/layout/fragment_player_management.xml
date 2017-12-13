@@ -23,4 +23,17 @@
         app:layout_anchorGravity="bottom|right|end"
         app:layout_behavior="org.secuso.privacyfriendlyboardgameclock.helpers.ScrollAwareFABBehavior" />
 
+    <android.support.design.widget.FloatingActionButton
+        app:fabSize="normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/red"
+        app:srcCompat="@drawable/ic_delete"
+        app:layout_anchor="@id/player_list"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_behavior="org.secuso.privacyfriendlyboardgameclock.helpers.ScrollAwareFABBehavior" />
+
 </android.support.design.widget.CoordinatorLayout>
