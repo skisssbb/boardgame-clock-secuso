@@ -3,6 +3,15 @@
     <string name="app_name_long">Privacy Friendly Board Game Clock</string>
     <string name="app_prefix" translatable="false">Privacy Friendly</string>
 
+    <!-- ###GENERAL### -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="error">Error</string>
+    <string name="cancel">Cancel</string>
+    <string name="players">Players</string>
+    <string name="ok">Okay</string>
+    <string name="dialog_no_permissions">Required permissions are not granted!</string>
+
     <!-- ###DRAWER###-->
     <string name="action_help">Help</string>
     <string name="action_about">About</string>
@@ -19,41 +28,73 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- ###MAIN### -->
-    <string name="main_button_text">Full Width Button</string>
-    <string name="main_button_disabled_text">Inactive Button</string>
-    <string name="main_button_1">1</string>
-    <string name="main_button_2">2</string>
-    <string name="main_button_3">3</string>
-    <string name="main_button_4">4</string>
-    <string name="main_button_5">5</string>
-    <string name="main_text_fullwithbutton_desc">A button that uses the full width of the screen looks like this:</string>
-    <string name="main_text_disabledbutton_desc">A disabled button looks like this (any size):</string>
-    <string name="main_text_title">This is an example app to demonstrate the design of a Privacy Friendly App. Further explanations can be found in the Privacy Friendly App Guide.</string>
-    <string name="main_text_normalbutton_desc">There are multiple ways to display basic buttons. Button 1 is the basic button. If you wish to separate a button visually, use button 2. The buttons 3&#8211;5 are examples for highlighted buttons. Depending on the app other colors are possible.</string>
-    <string name="main_button_welcomedialog_text">Use the button in the lower left corner to call the Welcome Dialog.</string>
-
-    <!-- ###GAME###-->
     <string name="title_activity_game">Game</string>
     <string name="game_button_start">New Game</string>
     <string name="game_button_continue">Continue Game</string>
+    <string name="action_new_game">New Game</string>
+    <string name="action_resume_game">Resume Game</string>
+    <string name="exit">Exit</string>
+    <string name="exitQuestion">Do you really want to close the application?</string>
     <string name="game_desc">This is the default main menu for game apps. The viewpager above should be used to switch between game modes.</string>
+    <!-- New Game -->
+    <string-array name="game_modes">
+        <item>Clockwise</item>
+        <item>Counter-Clockwise</item>
+        <item>Random</item>
+        <item>Manual sequence</item>
+    </string-array>
+    <string name="modeClockwise">Clockwise</string>
+    <string name="modeCounterClockwise">Counter-Clockwise</string>
+    <string name="modeRandom">Random</string>
+    <string name="modeChess">Chess</string>
+    <string name="gameMode">Game Mode:</string>
+    <string name="resetTimeAfterRoundCheck">Reset time after each round?</string>
+    <string name="increaseTimeAfterRoundCheck">Increase time after each round?</string>
+    <string name="gameName">Game Name:</string>
+    <string name="timeDelta">Extra Time:</string>
+    <string name="gameNameStandard">Game</string>
+    <string name="chess_clock">Chess Clock</string>
+    <string name="roundTimeLargerInfo">The selected round time has been reduced to equal the selected game time, since round time must not be bigger than game time.</string>
+    <!-- Game -->
+    <string name="round">Round:</string>
+    <string name="saveGame">Save Clock</string>
+    <string name="showResults">Show Results</string>
+    <string name="gameTime">Game Time:</string>
+    <string name="currentPlayer">Player:</string>
+    <string name="save">Save</string>
+    <string name="play">Play</string>
+    <string name="nextPlayer">Next Player</string>
+    <string name="roundTime">Round Time:</string>
+    <string name="finishGame">Finish</string>
+    <string name="quitGame">Quit Game</string>
+    <string name="infinite">Infinite</string>
+    <string name="pause_capslock" translatable="false">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="quitGameQuestion">Do you want to save the current clock before leaving?</string>
+    <string name="leaveGameQuestion">Do you really want to quit the current game?</string>
+    <string name="finishGameQuestion">Do you really want to finish the current game?</string>
+    <string name="sureToSaveGameQuestion">Are you sure you want to save the current clock?</string>
+    <string name="gameNameSizeError">Please enter a game name to continue.</string>
+    <string name="roundTimeSetError">Please set a game time and round time of at least 1 seconds to continue.</string>
+    <string name="gameSavedSuccess">Clock saved successfully!</string>
+    <string name="swipeDialogQuestion">Swipe Gestures</string>
+    <string name="swipeDialogAnswer">Instead of using the button \'Next Player\' you can also swipe for selecting the next player.</string>
+    <string name="roundTimeOverDialogHeading">Finish Game</string>
+    <string name="roundTimeOverDialogQuestion">The current player ran out of time. Do you want to finish this game or resume with the next player until the current round is over?</string>
+    <string name="manualChoiceError">Please select every player from the list!</string>
+    <string name="manualChoiceHeading">Set player sequence</string>
+
+    <!-- Load Game -->
+    <string name="loadGame">Load Game</string>
+    <string name="loadSelectedGame">Load Game</string>
+    <string name="pleaseChooseAGame">Please choose a game from the list.</string>
+
+    <!-- Choose Players -->
+    <string name="errorAtLeastTwoPlayers">Please choose at least two players to continue.</string>
+    <string name="startNewGame">Start New Game</string>
 
     <!-- ###PLAYER MANAGEMENT### -->
     <string name="player_management">Player Management</string>
-    <string name="chooseNewPlayerMode" translatable="false">ChooseNewPlayerModeFragment</string>
-    <string name="createNewPlayerFragment" translatable="false">CreateNewPlayerFragment</string>
-    <string name="choosePlayersFragment" translatable="false">ChoosePlayersFragment</string>
-    <string name="contactListFragment" translatable="false">ContactListFragment</string>
-    <string name="editPlayerFragment" translatable="false">EditPlayerFragment</string>
-    <string name="gameFragment" translatable="false">GameFragment</string>
-    <string name="gameHistoryFragment" translatable="false">GameHistoryFragment</string>
-    <string name="gameResultsFragment" translatable="false">GameResultsFragment</string>
-    <string name="loadGameFragment" translatable="false">LoadGameFragment</string>
-    <string name="helpFragment" translatable="false">HelpFragment</string>
-    <string name="mainMenuFragment" translatable="false">MainMenuFragment</string>
-    <string name="playerManagementFragment" translatable="false">PlayerManagementFragment</string>
-    <string name="newGameFragment" translatable="false">NewGameFragment</string>
-    <string name="playerStatisticsFragment" translatable="false">PlayerStatisticsFragment</string>
     <string name="new_player">New Player</string>
     <string name="contact">Contact</string>
     <string name="dialog_choose_new_player">Choose how to create new player:</string>
@@ -64,7 +105,13 @@
     <string name="confirm">CONFIRM</string>
     <string name="addContact">ADD CONTACT</string>
     <string name="addContacts">ADD CONTACTS</string>
+    <string name="editPlayer">Edit Player</string>
 
+    <!-- Player Statistics -->
+    <string name="playerStatistic">Player Statistic</string>
+    <string name="playedGames">Games played:</string>
+    <string name="completedRounds">Rounds finished:</string>
+    <string name="totalTimePlayed">Total Time played:</string>
 
 
     <!--###HELP###-->
@@ -118,5 +165,23 @@ Ne albucius perfecto adolescens eum, id choro assueverit mea, sed viris constitu
     <string name="main_button_welcomedialog">Show Welcome</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
+
+    <!-- ### FRAGMENT AND DIALOG ### -->
+    <!-- ### Main Menu ### -->
+    <string name="mainMenuWelcomeFragment" translatable="false">MainMenuWelcomeFragment</string>
+    <string name="loadGameFragment" translatable="false">LoadGameFragment</string>
+    <!-- ### Player Management ### -->
+    <string name="chooseNewPlayerMode" translatable="false">ChooseNewPlayerModeFragment</string>
+    <string name="createNewPlayerFragment" translatable="false">CreateNewPlayerFragment</string>
+    <string name="choosePlayersFragment" translatable="false">ChoosePlayersFragment</string>
+    <string name="contactListFragment" translatable="false">ContactListFragment</string>
+    <string name="editPlayerFragment" translatable="false">EditPlayerFragment</string>
+    <string name="gameFragment" translatable="false">GameFragment</string>
+    <string name="gameHistoryFragment" translatable="false">GameHistoryFragment</string>
+    <string name="gameResultsFragment" translatable="false">GameResultsFragment</string>
+    <string name="helpFragment" translatable="false">HelpFragment</string>
+    <string name="playerManagementFragment" translatable="false">PlayerManagementFragment</string>
+    <string name="newGameFragment" translatable="false">NewGameFragment</string>
+    <string name="playerStatisticsFragment" translatable="false">PlayerStatisticsFragment</string>
 
 </resources>

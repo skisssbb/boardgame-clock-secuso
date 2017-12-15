@@ -17,6 +17,8 @@
 
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +27,8 @@ import android.widget.Button;
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.fragments.MainMenuWelcomeFragment;
+import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.PrefManager;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
@@ -34,17 +38,27 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
  */
 
 public class MainActivity extends BaseActivity {
+    private FragmentManager fm;
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Create Database, only once
-        PlayersDataSourceSingleton.getInstance(this.getApplicationContext());
-        GamesDataSourceSingleton.getInstance(this.getApplicationContext());
+        PlayersDataSourceSingleton pds = PlayersDataSourceSingleton.getInstance(this.getApplicationContext());
+        pds.open();
+        GamesDataSourceSingleton gds = GamesDataSourceSingleton.getInstance(this.getApplicationContext());
+        gds.open();
+
+        fm = getFragmentManager();
+        final FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuWelcomeFragment());
+        fragmentTransaction.addToBackStack(getString(R.string.mainMenuWelcomeFragment));
+        fragmentTransaction.commit();
 
         // Use this a button to display the tutorial screen
-        Button b = (Button) findViewById(R.id.button_welcomedialog);
+        Button b = findViewById(R.id.button_welcomedialog);
         if(b != null) {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,5 +89,13 @@ public class MainActivity extends BaseActivity {
             // do something with all these buttons?
             default:
         }
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

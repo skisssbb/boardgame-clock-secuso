@@ -175,6 +175,16 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         this.playersList = playersList;
     }
 
+    public Player getPlayer(int posision){
+        return playersList.get(posision);
+    }
+
+        /*  #################################################################
+        #                                                               #
+        #                       Helper class                            #
+        #                                                               #
+        #################################################################*/
+
     protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
         private ImageView playerIMGView;
         private TextView playerTextView;
