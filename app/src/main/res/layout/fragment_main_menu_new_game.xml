@@ -65,7 +65,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/hours_new_game_time"
                     android:layout_width="30dp"
                     android:layout_height="120dp"
@@ -81,7 +81,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/minutes_new_game_time"
                     android:layout_width="30dp"
                     android:layout_height="120dp"
@@ -96,7 +96,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/seconds_new_game_time"
                     android:layout_width="30dp"
                     android:layout_height="120dp"
@@ -149,7 +149,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/hours_new_round_time"
                     android:layout_width="30dp"
                     android:layout_height="120dp"
@@ -164,7 +164,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/minutes_new_round_time"
                     android:layout_width="30dp"
                     android:layout_height="120dp"
@@ -179,7 +179,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/seconds_new_round_time"
                     android:layout_width="30dp"
                     android:layout_height="120dp"
@@ -276,7 +276,7 @@
                 android:orientation="horizontal"
                 android:visibility="invisible">
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/hours_new_game_delta"
                     android:layout_width="30dp"
                     android:layout_height="120dp"
@@ -291,7 +291,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/minutes_new_game_delta"
                     android:layout_width="30dp"
                     android:layout_height="120dp"
@@ -306,7 +306,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <org.secuso.privacyfriendlyboardgameclockori.view.NumberPicker
+                <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
                     android:id="@+id/seconds_new_game_delta"
                     android:layout_width="30dp"
                     android:layout_height="120dp"

@@ -92,7 +92,9 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         if(actionMode != null){
             toggleSelection(position);
         } else{
-            //TODO if normal click, show dialog with player
+            playerListAdapter.setLongClickedSelected(false);
+            playerListAdapter.setSimpleClickedSelected(true);
+
             List<Player> playersList = playerListAdapter.getPlayersList();
             final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
             LayoutInflater factory = getLayoutInflater();
@@ -232,7 +234,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.player_management_menu, menu);
         return true;
     }
 
@@ -247,7 +249,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     }
 
     private void switchVisibilityOf2FABs(){
-        if(fabAdd.getVisibility() == View.VISIBLE && fabDelete.getVisibility() == View.GONE){
+        if(fabAdd.getVisibility() != View.GONE && fabDelete.getVisibility() == View.GONE){
             fabAdd.setVisibility(View.GONE);
             fabDelete.setVisibility(View.VISIBLE);
         }else{
@@ -276,6 +278,8 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            playerListAdapter.setLongClickedSelected(true);
+            playerListAdapter.setSimpleClickedSelected(false);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             switchVisibilityOf2FABs();
             return true;
@@ -293,6 +297,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
 
         @Override
         public void onDestroyActionMode(ActionMode mode) {
+            playerListAdapter.setLongClickedSelected(false);
             playerListAdapter.clearSelection();
             actionMode = null;
             switchVisibilityOf2FABs();

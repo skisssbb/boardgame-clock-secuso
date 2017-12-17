@@ -57,21 +57,6 @@ public class MainActivity extends BaseActivity {
         fragmentTransaction.addToBackStack(getString(R.string.mainMenuWelcomeFragment));
         fragmentTransaction.commit();
 
-        // Use this a button to display the tutorial screen
-        Button b = findViewById(R.id.button_welcomedialog);
-        if(b != null) {
-            b.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    PrefManager prefManager = new PrefManager(getBaseContext());
-                    prefManager.setFirstTimeLaunch(true);
-                    Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
-            });
-        }
-
         overridePendingTransition(0, 0);
     }
 

@@ -93,8 +93,27 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         ImageView imageView = viewHolder.playerIMGView;
         imageView.setImageBitmap(player.getIcon());
 
-        // Highlight the item if it's selected
-        viewHolder.selectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+        // Highlight the item with blue if it's simple selected
+        if(isSimpleClickedSelected && !isLongClickedSelected){
+            viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+            if(isSelected(position)){
+                viewHolder.simpleClickedSelectedOverlay.setVisibility(View.VISIBLE);
+                viewHolder.selectedPlayerNumber.setText(getSelectedItems().indexOf(position)+1+".");
+            }
+            else{
+                viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+                viewHolder.selectedPlayerNumber.setText("");
+            }
+        }
+        // Highlight the item with grey if it's long selected
+        else if (!isSimpleClickedSelected && isLongClickedSelected){
+            viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+            viewHolder.longClickedSelectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+        }
+        else{
+            viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+            viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+        }
     }
 
     /**
@@ -179,7 +198,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         return playersList.get(posision);
     }
 
-        /*  #################################################################
+    /*  #################################################################
         #                                                               #
         #                       Helper class                            #
         #                                                               #
@@ -189,7 +208,9 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         private ImageView playerIMGView;
         private TextView playerTextView;
         private ItemClickListener itemClickListener;
-        private View selectedOverlay;
+        private View longClickedSelectedOverlay;
+        private View simpleClickedSelectedOverlay;
+        private TextView selectedPlayerNumber;
 
         /**
          *
@@ -202,7 +223,9 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
             itemView.setOnLongClickListener(this);
             playerIMGView = (ImageView) itemView.findViewById(R.id.player_image);
             playerTextView = (TextView) itemView.findViewById(R.id.player_text);
-            selectedOverlay = itemView.findViewById(R.id.selected_overlay);
+            simpleClickedSelectedOverlay = itemView.findViewById(R.id.simpleClicked_selected_overlay);
+            longClickedSelectedOverlay = itemView.findViewById(R.id.longClicked_selected_overlay);
+            selectedPlayerNumber = itemView.findViewById(R.id.selectedPlayerNumberTextView);
             this.itemClickListener = itemClickListener;
         }
 

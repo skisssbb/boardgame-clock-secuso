@@ -53,7 +53,6 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
                     fab.setVisibility(View.INVISIBLE);
                 }
             });
-
         }
         // User scrolled up -> show the FAB
         else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {

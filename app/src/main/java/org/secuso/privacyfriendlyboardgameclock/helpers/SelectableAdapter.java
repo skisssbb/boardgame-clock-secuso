@@ -13,6 +13,8 @@ import java.util.List;
 public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
     @SuppressWarnings("unused")
     private static final String TAG = SelectableAdapter.class.getSimpleName();
+    protected boolean isLongClickedSelected = false;
+    protected boolean isSimpleClickedSelected = false;
 
     private SparseBooleanArray selectedItems;
 
@@ -39,7 +41,14 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> exte
         } else {
             selectedItems.put(position, true);
         }
-        notifyItemChanged(position);
+        // if item is longclicked selected, notify only 1 item changed
+        if(isLongClickedSelected && !isSimpleClickedSelected) notifyItemChanged(position);
+        // if item is simple selected, notify all selected item cause the selected player number has to be updated
+        else if (!isLongClickedSelected && isSimpleClickedSelected){
+            for(int i  = 0; i < selectedItems.size(); i++){
+                notifyItemChanged(selectedItems.keyAt(i));
+            }
+        }
     }
 
     /**
@@ -71,5 +80,22 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> exte
             items.add(selectedItems.keyAt(i));
         }
         return items;
+    }
+
+    public boolean isLongClickedSelected() {
+        return isLongClickedSelected;
+    }
+
+
+    public boolean isSimpleClickedSelected() {
+        return isSimpleClickedSelected;
+    }
+
+    public void setLongClickedSelected(boolean longClickedSelected) {
+        isLongClickedSelected = longClickedSelected;
+    }
+
+    public void setSimpleClickedSelected(boolean simpleClickedSelected) {
+        isSimpleClickedSelected = simpleClickedSelected;
     }
 }

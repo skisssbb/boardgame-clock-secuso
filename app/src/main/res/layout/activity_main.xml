@@ -8,11 +8,15 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffffff"
         tools:context=".MainActivity">
+
+        <include layout="@layout/toolbar"/>
+
 
         <FrameLayout
             android:id="@+id/MainActivity_fragment_container"

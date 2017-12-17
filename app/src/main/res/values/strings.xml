@@ -33,6 +33,7 @@
     <string name="game_button_continue">Continue Game</string>
     <string name="action_new_game">New Game</string>
     <string name="action_resume_game">Resume Game</string>
+    <string name="choose_players">Choose Players</string>
     <string name="exit">Exit</string>
     <string name="exitQuestion">Do you really want to close the application?</string>
     <string name="game_desc">This is the default main menu for game apps. The viewpager above should be used to switch between game modes.</string>
